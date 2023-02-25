@@ -12,7 +12,7 @@ Product.belongsTo(Category, {
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
   through: {
-    model: 'ProductTag',
+    model: ProductTag,
     as: 'product_tags'
   },
 });
