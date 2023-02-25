@@ -120,7 +120,14 @@ router.delete('/:id', async (req, res) => {
       id: req.params.id,
     },
   })
-  .then((productData) => {
+  .then( async (productData) => {
+    
+    // const productTag = await ProductTag.destroy({
+    //   where: {
+    //     product_id: req.params.id,
+    //   },
+    // })
+    // console.log(productTag)
     if (productData == 1) {
     res.status(200).json({message: `Successfully Deleted Product Id: ${req.params.id}`})
     } else {
