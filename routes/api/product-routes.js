@@ -10,10 +10,10 @@ router.get('/', async (req, res) => {
   try {
     const productData = await Product.findAll({
       include: [{ model: Category }, { model: Tag }]
-    })
+    });
     res.status(200).json(productData);
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
 });
 
@@ -121,13 +121,6 @@ router.delete('/:id', async (req, res) => {
     },
   })
   .then( async (productData) => {
-    
-    // const productTag = await ProductTag.destroy({
-    //   where: {
-    //     product_id: req.params.id,
-    //   },
-    // })
-    // console.log(productTag)
     if (productData == 1) {
     res.status(200).json({message: `Successfully Deleted Product Id: ${req.params.id}`})
     } else {

@@ -63,10 +63,16 @@ router.put('/:id', (req, res) => {
       return;
     } else if (validate == 0) {
       res.status(404).json({message: 'Cannot leave body blank'});
-      return
+      return;
+    } else if(tag == 0) {
+      res.status(404).json({message: 'No tag with that Id!'});
+      return;
     }
     res.status(200).json(tag);
   })
+  .catch((err) => {
+    res.status(500).json(err)
+  });
 });
 
 router.delete('/:id', (req, res) => {
